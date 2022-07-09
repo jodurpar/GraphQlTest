@@ -9,6 +9,7 @@ const { ErrorWithProps } = require('mercurius')
 import { SqlService } from '../../../services/sqlservice'
 export class StoredProcedures {
     private static _typeDefs = gql`
+    scalar Date
     type Query 
     {
 		AllStoredProcedures: [StoredProcedureData]
@@ -25,7 +26,7 @@ export class StoredProcedures {
         base_schema_ver: Int
         replinfo: Int
         parent_obj: Int
-        crdate: String
+        crdate: Date
         ftcatid: Int
         schema_ver: Int
         stats_schema_ver: Int
@@ -33,7 +34,7 @@ export class StoredProcedures {
         userstat: Int
         sysstat: Int
         indexdel : Int
-        refdate: String
+        refdate: Date
         version: Int
         deltrig: Int
         instrig: Int

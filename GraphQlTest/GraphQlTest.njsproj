@@ -58,7 +58,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\common\apiData.ts" />
     <TypeScriptCompile Include="src\register\mercuriusregister.ts" />
-    <TypeScriptCompile Include="src\schema\isodate.ts" />
     <TypeScriptCompile Include="src\schema\processes\databasereconnect.ts" />
     <TypeScriptCompile Include="src\schema\queries\databases\databases.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functions.ts" />

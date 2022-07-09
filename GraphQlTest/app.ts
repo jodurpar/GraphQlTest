@@ -4,8 +4,6 @@ import { SqlService } from './src/services/sqlservice'
 import { apiData } from './src/common/apiData';
 
 
-//const fastify = Fastify()
-
 fastify.register(require('@fastify/cors'), {
     origin: ['http://localhost'],
     methods: ['GET', 'PUT', 'POST']

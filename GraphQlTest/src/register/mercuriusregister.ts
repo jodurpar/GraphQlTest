@@ -13,12 +13,13 @@ import { Tables } from '../schema/queries/tables/tables'
 import { Functions } from '../schema/queries/functions/functions'
 import { Databases } from '../schema/queries/databases/databases'
 import { DatabaseReconnect  } from '../schema/processes/databasereconnect'
-// import customScalarResolver from '../schema/isodate'
+const { ScalarNameTypeDefinition, ScalarNameResolver  } = require('graphql-scalars');
 export class MercuriusRegister {
     public static Setup(app: any) {
         app.register(mercurius, {
             schema: makeExecutableSchema({
                 typeDefs: mergeTypeDefs([
+                    ScalarNameTypeDefinition,
                     StoredProcedures.typeDefs,
                     Views.typeDefs,
                     Functions.typeDefs,
@@ -27,7 +28,7 @@ export class MercuriusRegister {
                     DatabaseReconnect.typeDefs,
                 ]),
                 resolvers: mergeResolvers([
-                    //customScalarResolver,
+                    ScalarNameResolver,
                     StoredProcedures.resolvers,
                     Views.resolvers,
                     Functions.resolvers,
