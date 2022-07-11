@@ -71,6 +71,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\schema\queries\tables\tablestypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\tables\tables.ts" />
+    <TypeScriptCompile Include="src\schema\queries\views\viewstypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\views\views.ts" />
     <TypeScriptCompile Include="src\services\configservice.ts" />
     <TypeScriptCompile Include="src\services\interfaces\config.ts" />
