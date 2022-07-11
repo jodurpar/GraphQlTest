@@ -1,8 +1,9 @@
-const fastify = require('fastify')({ logger: true })
+const fastify = require('fastify')({ logger: { level: 'info'} })
 import { MercuriusRegister } from './src/register/mercuriusregister'
 import { SqlService } from './src/services/sqlservice'
 import { apiData } from './src/common/apiData';
 
+apiData.Setup()
 
 fastify.register(require('@fastify/cors'), {
     origin: ['http://localhost'],
@@ -10,10 +11,9 @@ fastify.register(require('@fastify/cors'), {
 })
 
 MercuriusRegister.Setup(fastify);
-apiData.Setup()
 
 SqlService.Setup().then(() => {
-    console.log('Sql online');
+    console.log(`Sql online on : ${apiData.sqlServer}`);
 }, (err) => {
     WriteDatabaseError(err);
 });
