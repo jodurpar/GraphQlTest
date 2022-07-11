@@ -50,25 +50,20 @@ export class StoredProcedures {
     private static _resolvers = {
         Query: {
             AllStoredProcedures: async (root) => {
-                let value = await SqlService.AllStoredProcedures();
-                if (value !== undefined) {
-                    return value;
-                }
-                else {
+                let value = await SqlService.AllStoredProcedures()
+                if (value == undefined) {
                     throw BussinesException.UndefinedReturnedValue();
                 }
+                return value;
             },
             OneStoredProcedure: async (root, { name }) => {
                 let value = await SqlService.OneStoredProcedure(name);
-                if (value !== undefined) {
-                    return value;
-                }
-                else {
+                if (value === undefined) {
                     throw BussinesException.UndefinedReturnedValue();
                 }
+                return value;
             },
-         },
-
+         }
     }
     public static get typeDefs() : any {
         return this._typeDefs;
