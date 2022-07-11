@@ -65,6 +65,7 @@
     <TypeScriptCompile Include="src\schema\processes\databasereconnect.ts" />
     <TypeScriptCompile Include="src\schema\queries\databases\databases.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functions.ts" />
+    <TypeScriptCompile Include="src\schema\queries\functions\functionstypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedures.ts" />
     <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedurestypedefs.ts">
       <SubType>Code</SubType>
