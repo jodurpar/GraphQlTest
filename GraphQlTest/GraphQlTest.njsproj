@@ -55,6 +55,7 @@
     <Folder Include="src\schema\queries\views\" />
     <Folder Include="src\services\" />
     <Folder Include="src\services\interfaces\" />
+    <Folder Include="src\services\constants\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\common\apiData.ts" />
@@ -77,6 +78,9 @@
     <TypeScriptCompile Include="src\schema\queries\views\viewstypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\views\views.ts" />
     <TypeScriptCompile Include="src\services\configservice.ts" />
+    <TypeScriptCompile Include="src\services\constants\constants.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\services\interfaces\config.ts" />
     <TypeScriptCompile Include="src\services\sqlservice.ts" />
   </ItemGroup>
