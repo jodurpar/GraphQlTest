@@ -66,6 +66,9 @@
     <TypeScriptCompile Include="src\schema\queries\databases\databases.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functions.ts" />
     <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedures.ts" />
+    <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedurestypedefs.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\schema\queries\tables\tables.ts" />
     <TypeScriptCompile Include="src\schema\queries\views\views.ts" />
     <TypeScriptCompile Include="src\services\configservice.ts" />
