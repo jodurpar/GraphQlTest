@@ -5,6 +5,7 @@
  * V1.0.0 - First version
  */
 import { gql } from "mercurius-codegen";
+import { BussinesException } from "../../../bussiness/exceptions";
 const { ErrorWithProps } = require('mercurius')
 import { SqlService } from '../../../services/sqlservice'
 export class StoredProcedures {
@@ -54,10 +55,7 @@ export class StoredProcedures {
                     return value;
                 }
                 else {
-                    throw new ErrorWithProps('Value', {
-                        code: 'UNDEFINED_RETURNED_VALUE',
-                        timestamp: Math.round(new Date().getTime() / 1000)
-                    })
+                    throw BussinesException.UndefinedReturnedValue();
                 }
             },
             OneStoredProcedure: async (root, { name }) => {
@@ -66,10 +64,7 @@ export class StoredProcedures {
                     return value;
                 }
                 else {
-                    throw new ErrorWithProps('Value', {
-                        code: 'UNDEFINED_RETURNED_VALUE',
-                        timestamp: Math.round(new Date().getTime() / 1000)
-                    })
+                    throw BussinesException.UndefinedReturnedValue();
                 }
             },
          },
@@ -81,5 +76,4 @@ export class StoredProcedures {
     public static get resolvers() : any {
         return this._resolvers;
     }
-
 }

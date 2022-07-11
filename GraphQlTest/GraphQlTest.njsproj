@@ -43,6 +43,7 @@
     <Folder Include="bin\" />
     <Folder Include="src\" />
     <Folder Include="src\common\" />
+    <Folder Include="src\bussiness\" />
     <Folder Include="src\register\" />
     <Folder Include="src\schema\" />
     <Folder Include="src\schema\processes\" />
@@ -57,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\common\apiData.ts" />
+    <TypeScriptCompile Include="src\bussiness\exceptions.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\register\mercuriusregister.ts" />
     <TypeScriptCompile Include="src\schema\processes\databasereconnect.ts" />
     <TypeScriptCompile Include="src\schema\queries\databases\databases.ts" />
