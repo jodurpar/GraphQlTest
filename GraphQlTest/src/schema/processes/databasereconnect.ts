@@ -4,35 +4,17 @@
  * Get all tables list in database
  * V1.0.0 - First version
  */
-import { gql } from "mercurius-codegen";
-const { ErrorWithProps } = require('mercurius')
 import { SqlService } from '../../services/sqlservice'
-
+import { databasereconnecttypedefs } from "./databasereconnecttypedefs";
 
 export class DatabaseReconnect {
-    private static _typeDefs = gql`
-    type Query 
-    {
-		DatabaseReconnect( server: String, database: String, user: String, password: String): [DatabaseReconnect]
-    }
-    type DatabaseReconnect {
-        Text: String
-    }`;
+    private static _typeDefs = databasereconnecttypedefs;
     private static _resolvers = {
         Query: {
             DatabaseReconnect: async (root, { server, database, user, password }) => {
-                let value = await SqlService.DatabaseReconnect(server, database, user, password);
-                if (value !== undefined) {
-                    return value;
-                }
-                else {
-                    throw new ErrorWithProps('Value', {
-                        code: 'UNDEFINED_RETURNED_VALUE',
-                       timestamp: Math.round(new Date().getTime() / 1000)
-                    })
-                }
-            },
-        },
+                return SqlService.DatabaseReconnect(server, database, user, password);
+            }
+        }
     }
     public static get typeDefs(): any {
         return this._typeDefs;

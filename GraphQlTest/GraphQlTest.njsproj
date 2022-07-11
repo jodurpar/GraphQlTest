@@ -63,6 +63,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\register\mercuriusregister.ts" />
     <TypeScriptCompile Include="src\schema\processes\databasereconnect.ts" />
+    <TypeScriptCompile Include="src\schema\processes\databasereconnecttypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\databases\databases.ts" />
     <TypeScriptCompile Include="src\schema\queries\databases\databasestypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functions.ts" />
