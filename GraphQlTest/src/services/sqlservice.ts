@@ -38,9 +38,7 @@ export class SqlService {
         apiData.password = password === undefined ? apiData.password : password;
         ConfigService.Refresh();
         await this.Setup();
-        return new Promise<any[]>((resolve) => {
-            resolve([{ Text: `Sql online on : ${apiData.sqlServer}` }, { Text : `Database : ${apiData.sqlDatabase}` } ])
-        })
+        return Promise.resolve([{ Text: `Sql online on : ${apiData.sqlServer}` }, { Text: `Database : ${apiData.sqlDatabase}` }]);
     }
     public static AllStoredProcedures() : Promise<any[]> {
         return this.CallSqlServer(`Select OBJECT_SCHEMA_NAME(o.id) as schema_name,* from sysobjects o where type = 'P' and category = 0`)
