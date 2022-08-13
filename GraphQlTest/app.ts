@@ -18,6 +18,10 @@ SqlService.Setup().then(() => {
     WriteDatabaseError(err);
 });
 
+fastify.get('/', {}, function (_request, reply) {
+    reply.redirect('/graphiql')
+});
+
 const start = async () => {
     try {
         await fastify.listen({ port: apiData.apiPort, host: '0.0.0.0' })
@@ -30,9 +34,7 @@ const start = async () => {
 }
 start()
 
-fastify.get('/', {}, function (request, reply) {
-    reply.redirect('/graphiql')
-});
+
 
 
 function WriteDatabaseError(err: any) {
