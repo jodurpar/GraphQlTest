@@ -20,7 +20,7 @@ SqlService.Setup().then(() => {
 
 const start = async () => {
     try {
-        await fastify.listen({ port: apiData.apiPort })
+        await fastify.listen({ port: apiData.apiPort, host: '0.0.0.0' })
         console.log(`Mercurius Server on http://localhost:${apiData.apiPort}/graphiql`);
     } catch (err) {
         fastify.log.error(err)

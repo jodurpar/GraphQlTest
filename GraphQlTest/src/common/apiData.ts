@@ -9,7 +9,7 @@ export class apiData {
     private static _apiVersion: string = '1.0.0';
     private static _user: string = 'sa';
     private static _password: string = '1234_asdf';
-    private static _apiPort: string = '51240';
+    private static _apiPort: number = 51240;
     private static _sqlServer: string = 'host.docker.internal';
     private static _sqlDatabase: string = 'WideWorldImporters';
     private static _apiDescription: string = 'GraphQL to query SqlServer object, with mercutius, mssql and fastify';
@@ -31,7 +31,7 @@ export class apiData {
     static set password(value: string) {
         apiData._password = value;
     }
-    static get apiPort(): string {
+    static get apiPort(): number {
         return apiData._apiPort;
     }
     static get sqlServer(): string {
@@ -58,7 +58,7 @@ export class apiData {
                 case '--u': apiData._user = process.argv[j + 1];
                     break;
                 case '--apiport':
-                case '--p': apiData._apiPort = process.argv[j + 1];
+                case '--p': apiData._apiPort = parseInt(process.argv[j + 1]);
                     break;
                 case '--description':
                 case '--d': apiData._apiDescription = process.argv[j + 1];
