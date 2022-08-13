@@ -30,6 +30,11 @@ const start = async () => {
 }
 start()
 
+fastify.get('/', {}, function (request, reply) {
+    reply.redirect('/graphiql')
+});
+
+
 function WriteDatabaseError(err: any) {
     console.log('')
     console.log('DATABASE ERROR.')
