@@ -32,6 +32,7 @@
   <ItemGroup>
     <None Include="app.ts" />
     <Content Include=".gitignore" />
+    <Content Include="dist\webpack.config.js" />
     <Content Include="docker-compose.yml" />
     <Content Include="dockerfile" />
     <Content Include="package.json" />
