@@ -84,6 +84,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\services\interfaces\config.ts" />
     <TypeScriptCompile Include="src\services\sqlservice.ts" />
+    <TypeScriptCompile Include="src\services\fastifyStart.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

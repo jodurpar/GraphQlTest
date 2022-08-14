@@ -18,6 +18,7 @@ export class SqlService {
             if (config !== undefined) {
                 sql.connect(config, async function (err: any) {
                     if (err) {
+                        SqlService.WriteDatabaseError(err);
                         reject(err);
                     }
                     else {
@@ -40,7 +41,7 @@ export class SqlService {
         await this.Setup();
         return Promise.resolve([{ Text: `Sql online on : ${apiData.sqlServer}` }, { Text: `Database : ${apiData.sqlDatabase}` }]);
     }
-    public static AllStoredProcedures() : Promise<any[]> {
+    public static AllStoredProcedures(): Promise<any[]> {
         return this.CallSqlServer(Constants.allstoredprocedures)
     }
     public static async OneStoredProcedure(name: string): Promise<any[]> {
@@ -92,7 +93,7 @@ export class SqlService {
         })
     }
     private static async GetStoredProcedureCompleteName(name): Promise<string> {
-        return new Promise<string>(async (resolve, reject) => { 
+        return new Promise<string>(async (resolve, reject) => {
             let complete_name = await this.CallSqlServer(`SELECT s.name + N'.' + p.name as extended_name
                 FROM sys.procedures p
                 JOIN sys.schemas s ON p.schema_id = s.schema_id
@@ -132,5 +133,13 @@ export class SqlService {
                 }
             });
         })
+    }
+
+    private static WriteDatabaseError(err: any) {
+        console.log('')
+        console.log('DATABASE ERROR.')
+        console.log('Time: ' + new Date().toLocaleString())
+        console.log('')
+        console.log(err);
     }
 }
