@@ -3,7 +3,7 @@
 This project is a test.
 Contains experimental features for use in other production apis.
 Made with:
- - Typescrip
+ - Typescript
  - Mercurius
  - mssql
  - fastify
