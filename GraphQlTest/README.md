@@ -8,7 +8,7 @@ Made with:
  - mssql
  - fastify
 
-When debuging run (55 in visual studio) runs at 
+When debuging run (f5 in visual studio) runs at 
     - Localhost:51240/graphiql
 in docker runs at
     - host.docker.internal:51240/graphiql
