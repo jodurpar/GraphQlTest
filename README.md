@@ -8,10 +8,12 @@ Made with:
  - mssql
  - fastify
 
-When debuging run (55 in visual studio) runs at 
+When debuging run (f5 in visual studio) runs at 
     - Localhost:51240/graphiql
 in docker runs at
     - host.docker.internal:51240/graphiql
+
+You can pull this image at https://hub.docker.com/repository/docker/jodurpar/dssqlgraphqlapi
 
 You may change this port to your desired port, changin dockerfile
     
