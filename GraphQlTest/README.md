@@ -1,8 +1,20 @@
 # GraphQAAidaTest
 
+This project is a test.
+Contains experimental features for use in other production apis.
+Made with:
+ - Typescrip
+ - Mercurius
+ - mssql
+ - fastify
 
-Localhost:51240/graphiql
+When debuging run (55 in visual studio) runs at 
+    - Localhost:51240/graphiql
+in docker runs at
+    - host.docker.internal:51240/graphiql
 
+You may change this port to your desired port, changin dockerfile
+    
 ## Install
 
 ### In command prompt
@@ -12,7 +24,34 @@ Localhost:51240/graphiql
 - Compile Typescript
 - Run node app.js
 
-### In visual studio 2019
+You mus change the setting adding arguments at command propmt
+
+   node app.js [args]
+
+- --apiport':
+- --p:             
+- --description':
+- --d: 
+- --name':
+- --n:
+- --sqlserver':
+- --s:
+- --database':
+- --g:
+- --user:
+- --u: 
+- --password':
+- --w:
+- lt: break;
+            
+```javascript
+    node app -p 51240 --s . -g test
+```
+
+This runs the api at 51240 port against Sqlserver at localhost and database test.
+Inside the playground you can reconect to another server or database
+
+### In visual studio 2019/2022
 
 - Clone this project
 - To run and debug in visual studio environments, remove "outDir" line of "compilerOptions" element in tsconfig.json file.
@@ -43,6 +82,16 @@ Localhost:51240/graphiql
 
 #examples
 
+In Query bodys you can include all data needes, this is onle one example.
+The complete list of data can yo see in docs section in the playground (upper-right corner)
+
+
+query Databases {
+  AllDatabases {
+    name
+  }
+}
+
 query StoredProcedures {
 	AllStoredProcedures {
     schema_name
@@ -51,8 +100,6 @@ query StoredProcedures {
     crdate
   }
 }
-
-
 
 query GetOneSp {
   OneStoredProcedure(name: "GetCityUpdates") {
@@ -136,8 +183,14 @@ query DatabaseReconnect {
   }
 }
 
-query Databases {
-  AllDatabases {
-    name
+query DatabaseReconnect {
+  DatabaseReconnect(database: "test") {
+     Text
   }
 }
+query DatabaseReconnect {
+  DatabaseReconnect(server: "host.docker.internal", database: "test") {
+     Text
+  }
+}
+
