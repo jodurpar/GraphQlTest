@@ -94,7 +94,7 @@ query Databases {
   }
 }
 
-query StoredProcedures {
+query AllStoredProcedures {
 	AllStoredProcedures {
     schema_name
     name
@@ -103,13 +103,13 @@ query StoredProcedures {
   }
 }
 
-query GetOneSp {
+query OneStoredProcedure {
   OneStoredProcedure(name: "GetCityUpdates") {
     Text
   }
 }
 
-query Views {
+query AllViews {
 	AllViews {
     schema_name
     name
@@ -118,7 +118,7 @@ query Views {
   }
 }
 
-query GetOneView {
+query OneView {
   OneView(name: "Customers") {
     Text
   }
