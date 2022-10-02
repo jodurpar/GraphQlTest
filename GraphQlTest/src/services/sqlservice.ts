@@ -1,5 +1,5 @@
 /******************************************************************
- * 04/06/2022 - Jose Durán Pareja
+ * 04/06/2022 - José Durán Pareja
  * 
  * SqlService to access sqlserver
  * V1.0.0 - First version

@@ -5,13 +5,13 @@
  * V1.0.0 - First version
  */
 export class apiData {
-    private static _apiName: string = 'dsGraphQAAidaTestpi';
+    private static _apiName: string = 'dsSqlGraphQLapi';
     private static _apiVersion: string = '1.0.0';
     private static _user: string = 'sa';
     private static _password: string = '1234_asdf';
     private static _apiPort: number = 51240;
     private static _sqlServer: string = 'host.docker.internal';
-    private static _sqlDatabase: string = 'WideWorldImporters';
+    private static _sqlDatabase: string = 'test';
     private static _apiDescription: string = 'GraphQL to query SqlServer object, with mercutius, mssql and fastify';
     static get apiName(): string {
         return apiData._apiName;

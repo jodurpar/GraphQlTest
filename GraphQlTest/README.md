@@ -13,6 +13,8 @@ When debuging run (f5 in visual studio) runs at
 in docker runs at
     - host.docker.internal:51240/graphiql
 
+You can pull this image at https://hub.docker.com/repository/docker/jodurpar/dssqlgraphqlapi
+
 You may change this port to your desired port, changin dockerfile
     
 ## Install
@@ -85,14 +87,28 @@ Inside the playground you can reconect to another server or database
 In Query bodys you can include all data needes, this is onle one example.
 The complete list of data can yo see in docs section in the playground (upper-right corner)
 
+query DatabaseReconnect {
+  DatabaseReconnect(server: "host.docker.internal") {
+     Text
+  }
+}
 
+query DatabaseReconnect {
+  DatabaseReconnect(database: "test") {
+     Text
+  }
+}
+query DatabaseReconnect {
+  DatabaseReconnect(server: "host.docker.internal", database: "test") {
+     Text
+  }
 query Databases {
   AllDatabases {
     name
   }
 }
 
-query StoredProcedures {
+query AllStoredProcedures {
 	AllStoredProcedures {
     schema_name
     name
@@ -101,13 +117,13 @@ query StoredProcedures {
   }
 }
 
-query GetOneSp {
+query OneStoredProcedure {
   OneStoredProcedure(name: "GetCityUpdates") {
     Text
   }
 }
 
-query Views {
+query AllViews {
 	AllViews {
     schema_name
     name
@@ -116,7 +132,7 @@ query Views {
   }
 }
 
-query GetOneView {
+query OneView {
   OneView(name: "Customers") {
     Text
   }
@@ -177,20 +193,6 @@ query UseThisFunction {
   }
 }
 
-query DatabaseReconnect {
-  DatabaseReconnect(server: "host.docker.internal") {
-     Text
-  }
-}
 
-query DatabaseReconnect {
-  DatabaseReconnect(database: "test") {
-     Text
-  }
-}
-query DatabaseReconnect {
-  DatabaseReconnect(server: "host.docker.internal", database: "test") {
-     Text
-  }
 }
 
