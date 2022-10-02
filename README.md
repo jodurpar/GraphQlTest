@@ -87,7 +87,21 @@ Inside the playground you can reconect to another server or database
 In Query bodys you can include all data needes, this is onle one example.
 The complete list of data can yo see in docs section in the playground (upper-right corner)
 
+query DatabaseReconnect {
+  DatabaseReconnect(server: "host.docker.internal") {
+     Text
+  }
+}
 
+query DatabaseReconnect {
+  DatabaseReconnect(database: "test") {
+     Text
+  }
+}
+query DatabaseReconnect {
+  DatabaseReconnect(server: "host.docker.internal", database: "test") {
+     Text
+  }
 query Databases {
   AllDatabases {
     name
@@ -179,20 +193,6 @@ query UseThisFunction {
   }
 }
 
-query DatabaseReconnect {
-  DatabaseReconnect(server: "host.docker.internal") {
-     Text
-  }
-}
 
-query DatabaseReconnect {
-  DatabaseReconnect(database: "test") {
-     Text
-  }
-}
-query DatabaseReconnect {
-  DatabaseReconnect(server: "host.docker.internal", database: "test") {
-     Text
-  }
 }
 
