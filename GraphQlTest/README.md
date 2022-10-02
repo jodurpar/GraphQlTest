@@ -1,6 +1,13 @@
 # DSsqlgrahqlapi.Test
 
 This project is a test.
+
+This api query SqlServer instances to retrieve information from databases, stored procedures, functions, tables, indexes, who accesses a table or where certain procedures or functions are used.
+
+NEXT: Retrieve which stored procedures update or insert a column in a table and who queries them
+
+
+
 Contains experimental features for use in other production apis.
 Made with:
  - Typescript
@@ -83,6 +90,13 @@ Inside the playground you can reconect to another server or database
 
 
 #examples
+
+There are two utils functions 
+
+  - UseThisFunction(name: "CalculateCustomerPrice") : Returns all stored procedures that uses function or stored procedures
+
+  - TableAcesses : Return all stored procedures that access a table. You an query ba all access or select "all, insert, update or delete", default is all. (you must exclude any of theese by add exclamation first character (!update)
+
 
 In Query bodys you can include all data needes, this is onle one example.
 The complete list of data can yo see in docs section in the playground (upper-right corner)
