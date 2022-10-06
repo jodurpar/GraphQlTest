@@ -11,6 +11,11 @@ import { Constants } from "./constants/constants";
 
 var sql = require("mssql");
 
+interface SqlVersion {
+    server: string,
+    version: string
+}
+
 export class SqlService {
     public static Setup(): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
@@ -40,6 +45,23 @@ export class SqlService {
         ConfigService.Refresh();
         await this.Setup();
         return Promise.resolve([{ Text: `Sql online on : ${apiData.sqlServer}` }, { Text: `Database : ${apiData.sqlDatabase}` }]);
+    }
+    public static async SqlserverVersion(servers: [string]): Promise<any[]> {
+        let results: Array<SqlVersion> = [];
+        let version = '';
+        if (servers == undefined) {
+            servers = [`${apiData.sqlServer}`]
+        };
+        for (var j = 0; j < servers.length ; j++) {
+            await this.DatabaseReconnect(servers[j], undefined, undefined, undefined);
+            let version = await this.CallSqlServer(`SELECT @@Version as version`);
+            console.log(version)
+            results.push({
+                server: servers[j],
+                version: version[0].version
+            })
+        }
+        return results;
     }
     public static AllStoredProcedures(): Promise<any[]> {
         return this.CallSqlServer(Constants.allstoredprocedures)
@@ -77,6 +99,13 @@ export class SqlService {
     }
     public static TableAccesses(type: string): Promise<any[]> {
         return this.CallSqlServer(`SELECT * FROM sys.procedures WHERE OBJECT_DEFINITION(OBJECT_ID) LIKE '${type}' `);
+
+    }
+    public static FindColumn(name: string): Promise<any[]> {
+        return this.CallSqlServer(`select  table_name, column_name 
+                                    from information_schema.columns
+                                    where column_name like '%${name}%' 
+                                    order by table_name, column_name `)
     }
     public static AllDatabases(): Promise<any[]> {
         return this.CallSqlServer(Constants.alldatabases);

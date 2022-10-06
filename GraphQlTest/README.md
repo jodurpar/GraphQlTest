@@ -116,7 +116,8 @@ query DatabaseReconnect {
   DatabaseReconnect(server: "host.docker.internal", database: "test") {
      Text
   }
-query Databases {
+}
+query AllDatabases {
   AllDatabases {
     name
   }

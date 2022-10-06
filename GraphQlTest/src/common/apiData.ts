@@ -11,7 +11,7 @@ export class apiData {
     private static _password: string = '1234_asdf';
     private static _apiPort: number = 51240;
     private static _sqlServer: string = 'host.docker.internal';
-    private static _sqlDatabase: string = 'test';
+    private static _sqlDatabase: string = 'master';
     private static _apiDescription: string = 'GraphQL to query SqlServer object, with mercutius, mssql and fastify';
     static get apiName(): string {
         return apiData._apiName;

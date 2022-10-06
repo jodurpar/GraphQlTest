@@ -12,6 +12,8 @@ import { Views } from '../schema/queries/views/views'
 import { Tables } from '../schema/queries/tables/tables'
 import { Functions } from '../schema/queries/functions/functions'
 import { Databases } from '../schema/queries/databases/databases'
+import { SqlserverVersion } from '../schema/queries/server/sqlserverversion'
+import { FindColumn } from '../schema/queries/server/findcolumn'
 import { DatabaseReconnect  } from '../schema/processes/databasereconnect'
 const { ScalarNameTypeDefinition, ScalarNameResolver  } = require('graphql-scalars');
 export class MercuriusRegister {
@@ -25,6 +27,8 @@ export class MercuriusRegister {
                     Functions.typeDefs,
                     Databases.typeDefs,
                     Tables.typeDefs,
+                    SqlserverVersion.typeDefs,
+                    FindColumn.typeDefs,
                     DatabaseReconnect.typeDefs,
                 ]),
                 resolvers: mergeResolvers([
@@ -34,6 +38,8 @@ export class MercuriusRegister {
                     Functions.resolvers,
                     Databases.resolvers,
                     Tables.resolvers,
+                    SqlserverVersion.resolvers,
+                    FindColumn.resolvers,
                     DatabaseReconnect.resolvers,
                 ]),
             }),

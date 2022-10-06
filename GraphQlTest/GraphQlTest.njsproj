@@ -51,6 +51,7 @@
     <Folder Include="src\schema\queries\" />
     <Folder Include="src\schema\queries\databases\" />
     <Folder Include="src\schema\queries\functions\" />
+    <Folder Include="src\schema\queries\server\" />
     <Folder Include="src\schema\queries\storedprocedures\" />
     <Folder Include="src\schema\queries\tables\" />
     <Folder Include="src\schema\queries\views\" />
@@ -70,6 +71,10 @@
     <TypeScriptCompile Include="src\schema\queries\databases\databasestypedefs.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functions.ts" />
     <TypeScriptCompile Include="src\schema\queries\functions\functionstypedefs.ts" />
+    <TypeScriptCompile Include="src\schema\queries\server\findcolumn.ts" />
+    <TypeScriptCompile Include="src\schema\queries\server\findcolumntypedefs.ts" />
+    <TypeScriptCompile Include="src\schema\queries\server\sqlserverversiontypedefs.ts" />
+    <TypeScriptCompile Include="src\schema\queries\server\sqlserverversion.ts" />
     <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedures.ts" />
     <TypeScriptCompile Include="src\schema\queries\storedprocedures\storedprocedurestypedefs.ts">
       <SubType>Code</SubType>
