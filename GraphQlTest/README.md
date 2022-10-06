@@ -117,6 +117,21 @@ query DatabaseReconnect {
      Text
   }
 }
+
+query SqlserverVersion {
+  SqlserverVersion(servers: ["host.docker.internal"]) {
+    server
+    version
+  }
+} 
+
+query FindColumn {
+  FindColumn (name: "City") {
+    table_name
+    column_name
+  }
+}
+
 query AllDatabases {
   AllDatabases {
     name
