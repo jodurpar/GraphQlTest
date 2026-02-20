@@ -71,7 +71,20 @@
    }
    ```
 
-7. **Prueba de seguridad – intento de inyección**
+7. **Filtrar por campo específico** (ejemplo: solo la columna "Nombre")
+   ```graphql
+   query {
+     oneDatabase(name: "Test") {
+       tables {
+         name
+         rows(field: "Nombre", limit: 5)
+       }
+     }
+   }
+   ```
+   *Resultado esperado*: un array donde cada objeto solo contiene la propiedad `Nombre`.
+
+8. **Prueba de seguridad – intento de inyección**
    ```graphql
    query {
      oneDatabase(name: "Test]; DROP TABLE clientes;--") {

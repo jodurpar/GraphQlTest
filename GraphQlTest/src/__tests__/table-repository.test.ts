@@ -28,4 +28,28 @@ describe('TableRepository', () => {
             );
         });
     });
+
+    describe('getTableData', () => {
+        it('should generate SQL with * when no field is provided', async () => {
+            mockDbService.query.mockResolvedValue([{ id: 1, name: 'Test' }]);
+
+            await repository.getTableData('MyDb', 'MyTable', 10, 0);
+
+            expect(mockDbService.query).toHaveBeenCalledWith(
+                expect.stringContaining('SELECT * FROM [MyDb].dbo.[MyTable]'),
+                expect.any(Object)
+            );
+        });
+
+        it('should generate SQL with specific field and handle escaping', async () => {
+            mockDbService.query.mockResolvedValue([{ email: 'test@example.com' }]);
+
+            await repository.getTableData('MyDb', 'MyTable', 10, 0, 'em]ail');
+
+            expect(mockDbService.query).toHaveBeenCalledWith(
+                expect.stringContaining('SELECT [em]]ail] FROM [MyDb].dbo.[MyTable]'),
+                expect.any(Object)
+            );
+        });
+    });
 });

@@ -39,12 +39,13 @@ builder.objectType('Table', {
             args: {
                 limit: t.arg.int({ defaultValue: 10 }),
                 offset: t.arg.int({ defaultValue: 0 }),
+                field: t.arg.string({ required: false }),
             },
-            resolve: async (parent, { limit, offset }) => {
+            resolve: async (parent, { limit, offset, field }) => {
                 const repo = container.resolve<ITableRepository>(TYPES.TableRepository);
                 try {
-                    const rows = await repo.getTableData(parent.databaseName, parent.name, limit ?? 10, offset ?? 0);
-                    console.log(`Fetched rows for table ${parent.databaseName}.${parent.name} limit=${limit} offset=${offset}:`, rows.length);
+                    const rows = await repo.getTableData(parent.databaseName, parent.name, limit ?? 10, offset ?? 0, field ?? undefined);
+                    console.log(`Fetched rows for table ${parent.databaseName}.${parent.name} limit=${limit} offset=${offset} field=${field}:`, rows.length);
                     return rows;
                 } catch (e) {
                     console.error('Error fetching rows for table', parent.name, e);
@@ -96,7 +97,7 @@ builder.queryType({
             type: ['Database'],
             resolve: async () => {
                 const repo = container.resolve<IDatabaseRepository>(TYPES.DatabaseRepository);
-                const dbNames = await repo.getAll();
+                const dbNames = await repo.getAll() || [];
                 return dbNames.map((name) => ({ name }));
             },
         }),
