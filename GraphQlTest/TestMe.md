@@ -25,11 +25,12 @@
        name
        tables {
          name
+         totalRows
        }
      }
    }
    ```
-   *Resultado esperado*: al menos la tabla `clientes`.
+   *Resultado esperado*: al menos la tabla `clientes` con su número total de filas.
 
 4. **Recuperar todos los registros de una tabla (hasta 100 filas)**
    ```graphql
@@ -37,12 +38,13 @@
      oneDatabase(name: "Test") {
        tables {
          name
+         totalRows
          rows(limit: 100)   # máximo 100 en la implementación actual
        }
      }
    }
    ```
-   *Resultado esperado*: un array de objetos JSON con todas las columnas de cada fila.
+   *Resultado esperado*: un array de objetos JSON con todas las columnas de cada fila, y el conteo total en `totalRows`.
 
 5. **Recuperar un único registro** (primer registro)
    ```graphql
@@ -88,4 +90,4 @@
 - Si en el futuro se añade el argumento `field`, podrás solicitar solo una columna, por ejemplo `rows(limit: 5, field: "Email")`.
 
 ---
-*Este documento está pensado para pruebas manuales rápidas y para validar que la capa de datos funciona correctamente y de forma segura.*
+*Este documento está pensado para pruebas manuales rápidas y para validar que la capa de datos funciona correctamente y de forma segura tras la remasterización (SOLID, DI, Pothos, Yoga).*
