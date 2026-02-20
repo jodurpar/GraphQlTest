@@ -1,6 +1,6 @@
 # GraphQlText - Remastered 🚀
 
-A modernAPI GraphQL moderna construida con **Fastify**, **GraphQL Yoga** y **Pothos**, siguiendo los más altos estándares de ingeniería de software: **SOLID, KISS, DRY y Clean Code**.
+A modern GraphQL API built with **Fastify**, **GraphQL Yoga** y **Pothos**, siguiendo los más altos estándares de ingeniería de software: **SOLID, KISS, DRY y Clean Code**.
 
 **Repository**: [https://github.com/jodurpar/GraphQlTest](https://github.com/jodurpar/GraphQlTest)
 
