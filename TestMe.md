@@ -1,18 +1,18 @@
 # TestMe – Manual Testing Guide
 
-Este documento guía las pruebas manuales para validar que la API remasterizada funciona correctamente tanto en local como en Docker.
+This document guides manual testing to validate that the remastered API works correctly both locally and in Docker.
 
-## 📋 Prerequisitos
-- Servidor local activo: `npm run dev` que escucha en `http://localhost:15250/graphql`
-- O contenedor Docker activo: `docker-compose up` que escucha en `http://localhost:15250/graphql`
+## 📋 Prerequisites
+- Local server active: `npm run dev` listening at `http://localhost:15250/graphql`
+- Or active Docker container: `docker-compose up` listening at `http://localhost:15250/graphql`
 
-## ✅ Pasos de prueba
+## ✅ Test Steps
 
-1. **Acceso inicial**
-   - Abrir `http://localhost:15250/graphql` en el navegador.
-   - Debería cargar la interfaz de **GraphiQL** (GraphQL Yoga).
+1. **Initial Access**
+   - Open `http://localhost:15250/graphql` in your browser.
+   - It should load the **GraphiQL** interface (GraphQL Yoga).
 
-2. **Listado de Bases de Datos**
+2. **Database Listing**
    ```graphql
    query {
      allDatabases {
@@ -20,9 +20,9 @@ Este documento guía las pruebas manuales para validar que la API remasterizada 
      }
    }
    ```
-   *Validación*: Verifica que aparezca al menos la base de datos `Test`.
+   *Validation*: Verify that at least the `Test` database appears.
 
-3. **Inspección de Tablas y Conteo**
+3. **Table Inspection and Count**
    ```graphql
    query {
      oneDatabase(name: "Test") {
@@ -34,9 +34,9 @@ Este documento guía las pruebas manuales para validar que la API remasterizada 
      }
    }
    ```
-   *Validación*: El campo `totalRows` debe mostrar el número real de filas de cada tabla.
+   *Validation*: The `totalRows` field should show the actual number of rows for each table.
 
-4. **Consulta de Datos con Paginación**
+4. **Query Data with Pagination**
    ```graphql
    query {
      oneDatabase(name: "Test") {
@@ -47,35 +47,35 @@ Este documento guía las pruebas manuales para validar que la API remasterizada 
      }
    }
    ```
-   *Validación*: Devuelve un máximo de 5 filas en formato JSON dinámico.
+   *Validation*: Returns a maximum of 5 rows in dynamic JSON format.
 
-5. **🔍 Filtrado de Columna (Nueva Funcionalidad)**
+5. **🔍 Column Filtering (New Feature)**
    ```graphql
    query {
      oneDatabase(name: "Test") {
        tables {
          name
-         rows(field: "Nombre", limit: 3)
+         rows(field: "Name", limit: 3)
        }
      }
    }
    ```
-   *Validación*: Los resultados deben contener **únicamente** la propiedad "Nombre".
+   *Validation*: Results should contain **only** the "Name" property.
 
-6. **Defensa SQL Injection**
+6. **SQL Injection Defense**
    ```graphql
    query {
-     oneDatabase(name: "Test]; DROP TABLE no_existo;--") {
+     oneDatabase(name: "Test]; DROP TABLE non_existent;--") {
        name
      }
    }
    ```
-   *Validación*: La query debe fallar con un error controlado de base de datos, demostrando que el escape de corchetes `[Test]]` funciona y evita la ejecución de comandos múltiples.
+   *Validation*: The query should fail with a controlled database error, demonstrating that bracket escaping `[Test]]` works and prevents multi-command execution.
 
-## 📦 Notas Técnicas
-- **Flexibilidad**: El campo `rows` es un escalar JSON para manejar tablas con esquemas desconocidos.
-- **Eficiencia**: La red detecta automáticamente el entorno (Docker vs Local) para el binding del host.
-- **Arquitectura**: Los resolvers invocan a la capa de servicios, que a su vez usa Repositorios tipados para el acceso a datos.
+## 📦 Technical Notes
+- **Flexibility**: The `rows` field is a dynamic JSON scalar to handle tables with unknown schemas.
+- **Efficiency**: The network automatically detects the environment (Docker vs Local) for host binding.
+- **Architecture**: Resolvers invoke the service layer, which uses typed Repositories for data access.
 
 ---
-*Mantenido por el equipo de Remasterización (SOLID/DI).*
+*Maintained by the Remasterization team (SOLID/DI).*

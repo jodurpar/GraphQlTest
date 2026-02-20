@@ -1,59 +1,59 @@
-# GraphQlText - Remasterizado 🚀
+# GraphQlText - Remastered 🚀
 
-API GraphQL moderna construida con **Fastify**, **GraphQL Yoga** y **Pothos**, siguiendo los más altos estándares de ingeniería de software: **SOLID, KISS, DRY y Clean Code**.
+A modern GraphQL API built with **Fastify**, **GraphQL Yoga**, and **Pothos**, following the highest software engineering standards: **SOLID, KISS, DRY, and Clean Code**.
 
-Esta API permite consultar instancias de SQL Server para recuperar información de bases de datos y tablas de forma dinámica y segura.
+This API allows querying SQL Server instances to retrieve information from databases and tables in a dynamic and secure way.
 
-## ✨ Características de la Remasterización
-- **Arquitectura SOLID**: Desacoplamiento total mediante Inyección de Dependencias (`tsyringe`).
-- **Arquitectura Code-First**: El esquema GraphQL se genera automáticamente desde el código TypeScript con **Pothos**.
-- **Seguridad**: Protección contra **SQL Injection** mediante repositorios tipados y saneamiento de entradas (`[dbSafe]`).
-- **Flexible & Dinámico**: Recupera datos de cualquier tabla con soporte para paginación (`limit`, `offset`) y filtrado opcional de columnas (`field`).
-- **Docker Ready**: Imagen multi-etapa optimizada para Node.js 20 con `docker-compose`.
+## ✨ Remasterization Features
+- **SOLID Architecture**: Total decoupling using Dependency Injection (`tsyringe`).
+- **Code-First Architecture**: The GraphQL schema is automatically generated from TypeScript code with **Pothos**.
+- **Security**: Protection against **SQL Injection** using typed repositories and input sanitization (`[dbSafe]`).
+- **Flexible & Dynamic**: Retrieve data from any table with support for pagination (`limit`, `offset`) and optional column filtering (`field`).
+- **Docker Ready**: Optimized multi-stage Dockerfile for Node.js 20 with root-level configuration.
+- **VS Code Ready**: Includes debug configurations, recommended extensions, and formatting settings.
 
-## 📁 Estructura del Proyecto
-- `src/core`: Infraestructura core, tipos e Inyección de Dependencias.
-- `src/graphql`: Definición del esquema GraphQL y resolvers (Pothos).
-- `src/repositories`: Capa de persistencia aislada (Repository Pattern).
-- `src/services`: Servicios de negocio (Configuración, SQL, etc).
+## 📁 Project Structure
+- `./GraphQlTest`: Main TypeScript source code folder.
+- `./.vscode`: Editor configurations, recommended extensions, and debugging.
+- `docker-compose.yml` & `dockerfile`: Deployment configuration at the root.
+- `TestMe.md`: Quick manual testing guide.
 
-## 🚀 Cómo empezar
+## 🚀 Getting Started
 
-### Requisitos
-- Node.js v20+ (o Docker)
+### Prerequisites
+- Node.js v20+ (or Docker)
 - SQL Server
 
-### Instalación Local
+### Local Installation
 ```bash
-# Entrar en la carpeta del proyecto
+# Enter the project folder
 cd GraphQlTest
 
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Iniciar en modo desarrollo (tsx watch)
+# Start in development mode (tsx watch)
 npm run dev
 ```
 
-### 🐳 Despliegue con Docker
-La aplicación está preparada para ejecutarse en contenedores de forma aislada.
+### 👩‍💻 Using VS Code
+The project includes an optimized `.vscode` folder:
+- **Debugging**: Press F5 or use the "Run and Debug" tab to start the local server with breakpoints.
+- **Formatting**: Prettier and ESLint configured to run automatically on save.
+- **Extensions**: Automatic recommendations for GraphQL, Docker, and ESLint.
 
-1. **Construir y levantar**:
-   ```bash
-   cd GraphQlTest
-   docker-compose up -d --build
-   ```
-2. **Acceso**: La API estará disponible en `http://localhost:15250/graphql`.
+### 🐳 Docker Deployment
+The application is ready to run in containers from the root directory.
 
-### ⚙️ Variables de Entorno
-Configurables vía `.env` o directamente en el `docker-compose.yml`:
-- `API_HOST`: Host de escucha (`0.0.0.0` para Docker, `localhost` para local).
-- `DB_SERVER`: Servidor de base de datos (Ej: `host.docker.internal` para conectar al SQL Server de tu máquina desde Docker).
-- `DB_USER` / `DB_PASSWORD`: Credenciales opcionales.
+```bash
+# From the main directory (where this README is located)
+docker-compose up -d --build
+```
+The API will be available at `http://localhost:15250/graphql`.
 
-## 🔍 Ejemplos de Consultas (GraphQL)
+## 🔍 Query Examples (GraphQL)
 
-### Listado de Bases de Datos
+### List Databases
 ```graphql
 query {
   allDatabases {
@@ -62,7 +62,7 @@ query {
 }
 ```
 
-### Inspección de Tablas y Conteo
+### Inspect Tables and Row Count
 ```graphql
 query {
   oneDatabase(name: "Test") {
@@ -75,23 +75,23 @@ query {
 }
 ```
 
-### Consulta de Datos con Paginación y Filtrado Columna
+### Query Data with Pagination and Column Filtering
 ```graphql
 query {
   oneDatabase(name: "Test") {
     tables {
       name
-      rows(field: "Nombre", limit: 5, offset: 0)
+      rows(field: "Name", limit: 5, offset: 0)
     }
   }
 }
 ```
 
-## 🧪 Pruebas
+## 🧪 Testing
 ```bash
-# Ejecutar todos los tests (Unitarios e Integración)
+cd GraphQlTest
 npm test
 ```
 
 ---
-**Remasterizado con ❤️ para cumplir con SOLID y Código Limpio.**
+**Remastered with ❤️ to comply with SOLID and Clean Code.**
