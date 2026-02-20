@@ -5,13 +5,14 @@
 README.md
 LICENSE
 
-# Node
+# Application Folder
+# Since the build context is GraphQlTest, these paths are relative to it
 node_modules
+dist
 npm-debug.log
 package-lock.json
 
 # Build and IDE
-dist
 .vs
 .vscode
 *.sln

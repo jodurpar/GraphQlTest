@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    build: .
+    build: ./GraphQlTest
     image: jodurpar/graphqltest
     container_name: graphql-api-remastered
     ports:
