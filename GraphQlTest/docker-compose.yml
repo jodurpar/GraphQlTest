@@ -9,6 +9,13 @@ services:
       - "15250:15250"
     environment:
       - NODE_ENV=production
+      - API_HOST=0.0.0.0
+      - DB_SERVER=host.docker.internal
+      # Si necesitas sobreescribir usuario o password en Docker, puedes hacerlo aquí:
+      # - DB_USER=tu_usuario
+      # - DB_PASSWORD=tu_password
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: always
 
   db:
@@ -18,4 +25,4 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=YourStrong@Passw0rd
     ports:
-      - "1433:1433"
+      - "1434:1433"

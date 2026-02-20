@@ -62,9 +62,10 @@ async function bootstrap() {
     });
 
     try {
-        await fastify.listen({ port: config.apiPort, host: 'localhost' });
-        fastify.log.info(`🚀 GraphQL Yoga is running at http://localhost:${config.apiPort}/graphql`);
-        console.log(`🚀 Server ready at http://localhost:${config.apiPort}/graphql`);
+        const host = process.env.API_HOST || 'localhost';
+        await fastify.listen({ port: config.apiPort, host });
+        fastify.log.info(`🚀 GraphQL Yoga is running at http://${host}:${config.apiPort}/graphql`);
+        console.log(`🚀 Server ready at http://${host}:${config.apiPort}/graphql`);
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);

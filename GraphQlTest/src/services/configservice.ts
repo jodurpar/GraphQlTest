@@ -5,10 +5,10 @@ import { apiData } from '../common/apiData';
 export class ConfigService {
     public get dbConfig() {
         return {
-            user: apiData.user,
-            password: apiData.password,
-            server: apiData.sqlServer,
-            database: apiData.sqlDatabase,
+            user: process.env.DB_USER || apiData.user,
+            password: process.env.DB_PASSWORD || apiData.password,
+            server: process.env.DB_SERVER || apiData.sqlServer,
+            database: process.env.DB_NAME || apiData.sqlDatabase,
             pool: {
                 max: 10,
                 min: 0,
