@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   api:
-    build: ./GraphQlTest
+    build:
+      context: .
+      dockerfile: dockerfile
     image: jodurpar/graphqltest
     container_name: graphql-api-remastered
     ports:

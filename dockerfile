@@ -4,11 +4,11 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 # Instalar dependencias
-COPY package*.json ./
+COPY GraphQlTest/package*.json ./
 RUN npm install
 
 # Copiar código fuente y construir
-COPY . .
+COPY GraphQlTest/ ./
 RUN npm run build
 
 # Stage 2: Runtime
