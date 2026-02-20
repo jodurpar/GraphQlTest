@@ -1,23 +1,28 @@
-FROM node:16.16-alpine3.15
-LABEL maintainer="jose.duran@duransoftware.es"
-LABEL description="SQL Query api"
-LABEL version="1.0.0"
+# Stage 1: Build
+FROM node:20-alpine AS build
 
-RUN mkdir /app
-RUN mkdir /app/node_modules
+WORKDIR /app
 
-WORKDIR .
+# Instalar dependencias
+COPY package*.json ./
+RUN npm install
 
-ADD ./docker/dssqlqueryapi.js ./app/ 
-	ADD node_modules/ ./app/node_modules/
+# Copiar código fuente y construir
+COPY . .
+RUN npm run build
 
+# Stage 2: Runtime
+FROM node:20-alpine
 
-WORKDIR ./app
+WORKDIR /app
 
-RUN ls -la /app/*
+# Copiar solo lo necesario para producción
+COPY --from=build /app/package*.json ./
+COPY --from=build /app/dist ./dist
+RUN npm install --omit=dev
 
+# Exponer el puerto configurado
+EXPOSE 15250
 
-
-
-EXPOSE 51240
-CMD ["node", "dssqlqueryapi.js"]
+# Iniciar la aplicación
+CMD ["npm", "start"]

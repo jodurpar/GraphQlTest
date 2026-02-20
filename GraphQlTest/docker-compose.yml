@@ -1,23 +1,21 @@
+version: '3.8'
 
-version: '2.4'
 services:
   api:
-    image: dssqlgraphqlapi:20
-    ports: 
-        - "51240:51240"
-    command: tail -f /dev/null
-    container_name: dssqldoc2
-    links:
-      - "db:database"
+    build: .
+    image: jodurpar/graphqltest
+    container_name: graphql-api-remastered
+    ports:
+      - "15250:15250"
+    environment:
+      - NODE_ENV=production
+    restart: always
 
   db:
-    image: mcr.microsoft.com/mssql/server:latest
-    ports: 
-        - "1433:1433"
-    command: tail -f /dev/null
-    container_name: sql2019cinco2
-    
-  
-#  networks:
-#    - bridge
-#    - alejandria
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
