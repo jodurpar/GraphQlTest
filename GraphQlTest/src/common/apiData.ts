@@ -1,84 +1,52 @@
-/******************************************************************
- * 04/06/2022 - Jose Durán Pareja
- * 
- * Contains api basic data
- * V1.0.0 - First version
- */
 export class apiData {
     private static _apiName: string = 'dsSqlGraphQLapi';
+    private static _apiDescription: string = 'GraphQL to query SqlServer objects';
     private static _apiVersion: string = '1.0.0';
     private static _user: string = 'sa';
     private static _password: string = '1234_asdf';
-    private static _apiPort: number = 51240;
-    private static _sqlServer: string = 'host.docker.internal';
+    private static _sqlServer: string = 'localhost'; // Ajustado para desarrollo local en Windows
     private static _sqlDatabase: string = 'master';
-    private static _apiDescription: string = 'GraphQL to query SqlServer object, with mercutius, mssql and fastify';
-    static get apiName(): string {
-        return apiData._apiName;
-    }
-    static get apiVersion(): string {
-        return apiData._apiVersion;
-    }
-    static get user(): string {
-        return apiData._user;
-    }
-    static set user(value: string) {
-        apiData._user = value;
-    }
-    static get password(): string {
-        return apiData._password;
-    }
-    static set password(value: string) {
-        apiData._password = value;
-    }
-    static get apiPort(): number {
-        return apiData._apiPort;
-    }
-    static get sqlServer(): string {
-        return apiData._sqlServer;
-    }
-    static set sqlServer(value: string) {
-        apiData._sqlServer = value;
-    }
-    static get sqlDatabase(): string {
-        return apiData._sqlDatabase;
-    }
-    static set sqlDatabase(value: string) {
-        apiData._sqlDatabase = value;
-    }
+    private static _apiPort: number = 15250;
 
-    static get apiDescription(): string {
-        return apiData._apiDescription;
-    }
-    public static Setup() {
+    static get apiName(): string { return this._apiName; }
+    static get apiDescription(): string { return this._apiDescription; }
+    static get apiVersion(): string { return this._apiVersion; }
+    static get user(): string { return this._user; }
+    static set user(value: string) { this._user = value; }
+    static get password(): string { return this._password; }
+    static set password(value: string) { this._password = value; }
+    static get sqlServer(): string { return this._sqlServer; }
+    static set sqlServer(value: string) { this._sqlServer = value; }
+    static get sqlDatabase(): string { return this._sqlDatabase; }
+    static set sqlDatabase(value: string) { this._sqlDatabase = value; }
+    static get apiPort(): number { return this._apiPort; }
+
+    static init() {
+        if (typeof process === 'undefined' || !process.argv) return;
         for (let j = 0; j < process.argv.length; j++) {
-            let arg = process.argv[j].toLowerCase();
-            switch (arg) {
+            switch (process.argv[j].toLowerCase()) {
+                case '--u':
                 case '--user':
-                case '--u': apiData._user = process.argv[j + 1];
+                    if (process.argv[j + 1]) this._user = process.argv[j + 1];
                     break;
-                case '--apiport':
-                case '--p': apiData._apiPort = parseInt(process.argv[j + 1]);
-                    break;
-                case '--description':
-                case '--d': apiData._apiDescription = process.argv[j + 1];
-                    break
-                case '--name':
-                case '--n': apiData._apiName = process.argv[j + 1];
-                    break;
+                case '--p':
                 case '--password':
-                case '--w': apiData._password = process.argv[j + 1];
+                    if (process.argv[j + 1]) this._password = process.argv[j + 1];
                     break;
+                case '--s':
+                case '--server':
+                    if (process.argv[j + 1]) this._sqlServer = process.argv[j + 1];
+                    break;
+                case '--d':
                 case '--database':
-                case '--g': apiData._sqlDatabase = process.argv[j + 1];
+                    if (process.argv[j + 1]) this._sqlDatabase = process.argv[j + 1];
                     break;
-                case '--sqlserver':
-                case '--s': apiData._sqlServer = process.argv[j + 1];
+                case '--port':
+                    if (process.argv[j + 1]) this._apiPort = parseInt(process.argv[j + 1]);
                     break;
-                default: break;
             }
         }
     }
-
 }
 
+apiData.init();
