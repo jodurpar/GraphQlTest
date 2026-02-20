@@ -1,6 +1,8 @@
 # GraphQlText - Remastered 🚀
 
-A modern GraphQL API built with **Fastify**, **GraphQL Yoga**, and **Pothos**, following the highest software engineering standards: **SOLID, KISS, DRY, and Clean Code**.
+A modernAPI GraphQL moderna construida con **Fastify**, **GraphQL Yoga** y **Pothos**, siguiendo los más altos estándares de ingeniería de software: **SOLID, KISS, DRY y Clean Code**.
+
+**Repository**: [https://github.com/jodurpar/GraphQlTest](https://github.com/jodurpar/GraphQlTest)
 
 This API allows querying SQL Server instances to retrieve information from databases and tables in a dynamic and secure way.
 

@@ -1,5 +1,7 @@
 # Docker Container Guide: jodurpar/graphqltest 🚀
 
+**Source Code**: [GitHub Repository](https://github.com/jodurpar/GraphQlTest)
+
 This container provides a **remastered GraphQL API** for SQL Server, built with Node.js 20, Fastify, and Pothos. It follows SOLID principles and is designed for high performance and security.
 
 ## 📝 What this container does
